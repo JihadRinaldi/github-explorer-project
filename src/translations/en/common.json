@@ -1,0 +1,19 @@
+{
+  "dashboard": {
+    "title": "Explore GitHub",
+    "repository_name_placeholder": "Type GitHub Username"
+  },
+  "buttons": {
+    "search": "Search",
+    "back": "Back"
+  },
+  "errors": {
+    "internal_server_error": "Internal server error. Please try again"
+  },
+  "yup": {
+    "mixed_required_field": "This field is required."
+  },
+  "message": {
+    "empty_repository": "This user doesn't have repository"
+  }
+}
