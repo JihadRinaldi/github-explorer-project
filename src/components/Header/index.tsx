@@ -8,6 +8,7 @@ export function Header({ children }: PropsWithChildren<unknown>) {
   return (
     <Container>
       <img
+        data-testid="header-logo"
         src={logo}
         alt="GitHub Explorer"
         aria-label="GitHub Explorer"

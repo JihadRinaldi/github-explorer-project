@@ -94,7 +94,7 @@ export function Dashboard() {
 
   return (
     <Layout>
-      <Title>{t("dashboard.title")}</Title>
+      <Title data-testid="dashboard-title">{t("dashboard.title")}</Title>
 
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input

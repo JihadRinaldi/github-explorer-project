@@ -1,8 +1,6 @@
 import React, { useCallback, useState } from "react";
-import { PulseLoader } from "react-spinners";
 
 import i18n from "translations/i18n";
-import { colors } from "styles/theme/colors";
 import star from "assets/star.svg";
 import { IRepository } from "interface/githubAPI";
 
@@ -38,10 +36,14 @@ const Accordion: React.FC<AccordionProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const AccordionContent = useCallback(() => {
-    if (isLoading) {
-      return <PulseLoader color={colors.dark} size={10} />;
+    if (repositories && repositories.length === 0) {
+      return (
+        <>
+          {i18n.t("message.empty_repository")}
+        </>
+      )
     }
-    if (repositories && repositories?.length) {
+    if (repositories && repositories.length) {
       return (
         <>
           {
@@ -64,11 +66,7 @@ const Accordion: React.FC<AccordionProps> = ({
         </>
       );
     }
-    return (
-      <div>
-        {i18n.t("message.empty_repository")}
-      </div>
-    );
+    return null;
   }, [isLoading, repositories]);
 
   const onClickAccordion = () => {
