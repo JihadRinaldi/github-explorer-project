@@ -14,6 +14,7 @@
     "mixed_required_field": "This field is required."
   },
   "message": {
-    "empty_repository": "This user doesn't have repository"
+    "empty_repository": "This user doesn't have repository",
+    "no_user": "No user found, type another username"
   }
 }

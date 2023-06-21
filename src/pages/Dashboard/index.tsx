@@ -11,9 +11,15 @@ import { Input } from "components/Input";
 import Accordion from "components/Accordion";
 
 import {
-  Form, Title, AddRepositoryInputError, StyledAccordionContainer,
+  Form,
+  Title,
+  AddRepositoryInputError,
+  StyledAccordionContainer,
+  StyledNotUserFound,
+  
 } from "./styles";
 import { RepositoryFormValues } from "./types";
+import i18n from "translations/i18n";
 
 export function Dashboard() {
   const {
@@ -31,6 +37,7 @@ export function Dashboard() {
     isSearchLoading,
     isGetRepoLoading,
     users,
+    isUsersEmpty,
     searchUsername,
     getUserRepos,
   } = useRepositories();
@@ -99,6 +106,7 @@ export function Dashboard() {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           id="repositoryName"
+          data-testid="input-username"
           ref={register}
           type="text"
           name="repositoryName"
@@ -108,6 +116,7 @@ export function Dashboard() {
         />
 
         <Button
+          data-testid="button-search"
           type="submit"
           isLoading={isSearchLoading}
         >
@@ -122,7 +131,13 @@ export function Dashboard() {
       )}
 
       <StyledAccordionContainer>
-        {sortedUser?.map(user => (
+        {isUsersEmpty 
+        ? 
+        (<StyledNotUserFound data-testid="message-empty-user">
+          {i18n.t('message.no_user')}
+        </StyledNotUserFound>)
+        :
+        (sortedUser?.map(user => (
           <Accordion
             key={user.login}
             avatar={user.avatar_url}
@@ -131,7 +146,8 @@ export function Dashboard() {
             repositories={user?.repository}
             title={user.login}
           />
-        ))}
+        )))
+        }
       </StyledAccordionContainer>
 
     </Layout>

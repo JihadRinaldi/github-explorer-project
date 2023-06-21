@@ -50,7 +50,7 @@ const Accordion: React.FC<AccordionProps> = ({
             repositories.map((repository) => (
               <Card key={repository?.id}>
                 <CardTitleContainer>
-                  <CardTitle>{repository.name}</CardTitle>
+                  <CardTitle data-testid="card-title">{repository.name}</CardTitle>
                   <StyledStarContainer>
                     {repository?.stargazers_count}
                     <img
@@ -81,7 +81,7 @@ const Accordion: React.FC<AccordionProps> = ({
       <AccordionItem>
         <AccordionHeader isOpen={isOpen} onClick={onClickAccordion}>
           <Avatar src={avatar} alt="Avatar" />
-          <AccordionTitle>{title}</AccordionTitle>
+          <AccordionTitle data-testid="accordion-title">{title}</AccordionTitle>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

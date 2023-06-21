@@ -11,6 +11,7 @@ export function useRepositories() {
   const [users, setUsers] = useState<IUserItem[]>([]);
   const [isSearchLoading, setIsSearchLoading] = useState(false);
   const [isGetRepoLoading, setIsGetRepoLoading] = useState(false);
+  const [isUsersEmpty, setIsUserEmpty] = useState(false);
 
   const [t] = useTranslation();
 
@@ -19,6 +20,9 @@ export function useRepositories() {
       setIsSearchLoading(true);
 
       const findResult = await findUsername(username);
+      if (findResult.items.length === 0) {
+        setIsUserEmpty(true);
+      }
       setUsers(findResult.items);
     } catch (err) {
       throw new Error(t("errors.internal_server_error"));
@@ -55,12 +59,15 @@ export function useRepositories() {
     users,
     isSearchLoading,
     isGetRepoLoading,
+    isUsersEmpty,
     searchUsername,
     getUserRepos,
   }), [
     users,
+    isUsersEmpty,
     isSearchLoading,
     isGetRepoLoading,
+    isUsersEmpty,
     searchUsername,
     getUserRepos,
   ]);

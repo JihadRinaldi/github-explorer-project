@@ -29,3 +29,11 @@ export const AddRepositoryInputError = styled.span`
 export const StyledAccordionContainer = styled.div`
   padding: 1rem 0;
 `;
+
+export const StyledNotUserFound = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
