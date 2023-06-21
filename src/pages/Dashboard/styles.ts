@@ -37,3 +37,7 @@ export const StyledNotUserFound = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const StyledSearchMessage = styled.div`
+  padding-top: 1rem;
+`;

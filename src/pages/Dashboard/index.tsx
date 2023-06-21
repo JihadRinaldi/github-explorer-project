@@ -16,7 +16,7 @@ import {
   AddRepositoryInputError,
   StyledAccordionContainer,
   StyledNotUserFound,
-  
+  StyledSearchMessage,
 } from "./styles";
 import { RepositoryFormValues } from "./types";
 import i18n from "translations/i18n";
@@ -126,11 +126,11 @@ export function Dashboard() {
       </Form>
 
       {inputUsername
-        ? (<div>
+        ? (<StyledSearchMessage>
             {i18n.t('message.search_username_x', {
               x: inputUsername,
             })}
-          </div>)
+          </StyledSearchMessage>)
         : null
       }
 
