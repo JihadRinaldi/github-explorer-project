@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslation } from "react-i18next";
 
-import { useRepositories } from "hooks/useGithub";
+import { useGithub } from "hooks/useGithub";
 import { addRepositorySchema } from "schemas/addRepositorySchema";
 import { Button } from "components/Button";
 import { Layout } from "components/Layout";
@@ -38,9 +38,10 @@ export function Dashboard() {
     isGetRepoLoading,
     users,
     isUsersEmpty,
+    inputUsername,
     searchUsername,
     getUserRepos,
-  } = useRepositories();
+  } = useGithub();
 
   const [t] = useTranslation();
 
@@ -123,6 +124,15 @@ export function Dashboard() {
           {t("buttons.search")}
         </Button>
       </Form>
+
+      {inputUsername
+        ? (<div>
+            {i18n.t('message.search_username_x', {
+              x: inputUsername,
+            })}
+          </div>)
+        : null
+      }
 
       {repositoryNameError && (
         <AddRepositoryInputError>

@@ -7,9 +7,10 @@ import {
   findUsername,
 } from "services/api";
 
-export function useRepositories() {
+export function useGithub() {
   const [users, setUsers] = useState<IUserItem[]>([]);
   const [isSearchLoading, setIsSearchLoading] = useState(false);
+  const [inputUsername, setInputUsername] = useState('');
   const [isGetRepoLoading, setIsGetRepoLoading] = useState(false);
   const [isUsersEmpty, setIsUserEmpty] = useState(false);
 
@@ -27,6 +28,7 @@ export function useRepositories() {
     } catch (err) {
       throw new Error(t("errors.internal_server_error"));
     } finally {
+      setInputUsername(username);
       setIsSearchLoading(false);
     }
   }, [t]);
@@ -60,6 +62,7 @@ export function useRepositories() {
     isSearchLoading,
     isGetRepoLoading,
     isUsersEmpty,
+    inputUsername,
     searchUsername,
     getUserRepos,
   }), [
@@ -68,6 +71,7 @@ export function useRepositories() {
     isSearchLoading,
     isGetRepoLoading,
     isUsersEmpty,
+    inputUsername,
     searchUsername,
     getUserRepos,
   ]);

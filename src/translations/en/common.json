@@ -15,6 +15,7 @@
   },
   "message": {
     "empty_repository": "This user doesn't have repository",
-    "no_user": "No user found, type another username"
+    "no_user": "No user found, type another username",
+    "search_username_x": "Showing users for '{{x}}'"
   }
 }
